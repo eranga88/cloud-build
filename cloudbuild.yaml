@@ -3,3 +3,5 @@ steps:
   args: ['build', '-t', 'gcr.io/ethereal-shine-337102/github.com/eranga88/cloud-build:$SHORT_SHA', '.'] 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/ethereal-shine-337102/github.com/eranga88/cloud-build:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta','run','deploy','ethereal-shine-337102','--region=us-central1','--platform=managed','--image=gcr.io/ethereal-shine-337102/github.com/eranga88/cloud-build:$SHORT_SHA']
